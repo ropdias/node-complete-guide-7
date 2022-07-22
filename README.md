@@ -8,7 +8,7 @@ Section 10 covered:
 - [x] NoSQL Introduction
 - [x] Comparing SQL and NoSQL
 - [x] Setting Up MySQL
-- [ ] Connecting our App to the SQL Database
+- [x] Connecting our App to the SQL Database
 - [ ] Basic SQL & Creating a Table
 - [ ] Retrieving Data
 - [ ] Fetching Products
