@@ -11,7 +11,7 @@ Section 10 covered:
 - [x] Connecting our App to the SQL Database
 - [x] Basic SQL & Creating a Table
 - [x] Retrieving Data
-- [ ] Fetching Products
+- [x] Fetching Products
 - [ ] Fetching Products - Time to Practice
 - [ ] Inserting Data Into the Database
 - [ ] Fetching a Single Product with the "where" Condition
