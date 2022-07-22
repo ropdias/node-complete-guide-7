@@ -13,7 +13,7 @@ Section 10 covered:
 - [x] Retrieving Data
 - [x] Fetching Products
 - [x] Fetching Products - Time to Practice
-- [ ] Inserting Data Into the Database
+- [x] Inserting Data Into the Database
 - [ ] Fetching a Single Product with the "where" Condition
 
 
