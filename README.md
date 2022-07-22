@@ -10,7 +10,7 @@ Section 10 covered:
 - [x] Setting Up MySQL
 - [x] Connecting our App to the SQL Database
 - [x] Basic SQL & Creating a Table
-- [ ] Retrieving Data
+- [x] Retrieving Data
 - [ ] Fetching Products
 - [ ] Fetching Products - Time to Practice
 - [ ] Inserting Data Into the Database
