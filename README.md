@@ -32,7 +32,7 @@ Section 11 covered:
 - [x] Adding a One-To-Many Relationship
 - [x] Creating & Managing a Dummy User
 - [x] Using Magic Association Methods
-- [ ] Fetching Related Products
+- [x] Fetching Related Products
 - [ ] One-To-Many & Many-To-Many Relations
 - [ ] Creating & Fetching a Cart
 - [ ] Adding New Products to the Cart
