@@ -24,7 +24,7 @@ Section 11 covered:
 - [x] Syncing JS Definitions to the Database
 - [x] Inserting Data & Creating a Product
 - [x] Retrieving Data & Finding Products
-- [ ] Getting a Single Product with the "where" Condition
+- [x] Getting a Single Product with the "where" Condition
 - [ ] Fetching Admin Products
 - [ ] Updating Products
 - [ ] Deleting Products
