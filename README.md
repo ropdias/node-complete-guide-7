@@ -26,7 +26,7 @@ Section 11 covered:
 - [x] Retrieving Data & Finding Products
 - [x] Getting a Single Product with the "where" Condition
 - [x] Fetching Admin Products
-- [ ] Updating Products
+- [x] Updating Products
 - [ ] Deleting Products
 - [ ] Creating a User Model
 - [ ] Adding a One-To-Many Relationship

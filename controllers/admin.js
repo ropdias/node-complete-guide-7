@@ -14,13 +14,6 @@ exports.postAddProduct = (req, res, next) => {
   const price = req.body.price;
   const description = req.body.description;
 
-  // const product = new Product(null, title, imageUrl, description, price);
-  // product
-  //   .save()
-  //   .then(() => {
-  //     res.redirect("/");
-  //   })
-  //   .catch((err) => console.log(err));
   Product.create({
     title: title,
     price: price,
@@ -44,19 +37,21 @@ exports.getEditProduct = (req, res, next) => {
     return res.redirect("/");
   }
   const prodId = req.params.productId;
-  Product.findById(prodId, (product) => {
-    // If we don't have a product and it's undefined:
-    if (!product) {
-      // We could retrieve a error page (better user experience) but for now we will just redirect:
-      return res.redirect("/");
-    }
-    res.render("admin/edit-product", {
-      pageTitle: "Edit Product",
-      path: "/admin/edit-product",
-      editing: editMode,
-      product: product,
-    });
-  });
+  Product.findByPk(prodId)
+    .then((product) => {
+      // If we don't have a product and it's undefined:
+      if (!product) {
+        // We could retrieve a error page (better user experience) but for now we will just redirect:
+        return res.redirect("/");
+      }
+      res.render("admin/edit-product", {
+        pageTitle: "Edit Product",
+        path: "/admin/edit-product",
+        editing: editMode,
+        product: product,
+      });
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.postEditProduct = (req, res, next) => {
@@ -66,17 +61,19 @@ exports.postEditProduct = (req, res, next) => {
   const updatedPrice = req.body.price;
   const updatedImageUrl = req.body.imageUrl;
   const updatedDesc = req.body.description;
-  // Create a new Product instance and populate with that information
-  const updatedProduct = new Product(
-    prodId,
-    updatedTitle,
-    updatedImageUrl,
-    updatedDesc,
-    updatedPrice
-  );
-  // Call the .save() method
-  updatedProduct.save();
-  res.redirect("/admin/products");
+  Product.findByPk(prodId)
+    .then((product) => {
+      product.title = updatedTitle;
+      product.price = updatedPrice;
+      product.description = updatedDesc;
+      product.imageUrl = updatedImageUrl;
+      return product.save();
+    })
+    .then(() => {
+      console.log("UPDATED PRODUCT!");
+      res.redirect("/admin/products");
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.getProducts = (req, res, next) => {
@@ -89,13 +86,6 @@ exports.getProducts = (req, res, next) => {
       });
     })
     .catch((err) => console.log(err));
-  // Product.fetchAll((products) => {
-  // res.render("admin/products", {
-  //   prods: products,
-  //   pageTitle: "Admin Products",
-  //   path: "/admin/products",
-  // });
-  // });
 };
 
 exports.postDeleteProduct = (req, res, next) => {
