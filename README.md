@@ -35,7 +35,7 @@ Section 11 covered:
 - [x] Fetching Related Products
 - [x] One-To-Many & Many-To-Many Relations
 - [x] Creating & Fetching a Cart
-- [ ] Adding New Products to the Cart
+- [x] Adding New Products to the Cart
 - [ ] Adding Existing Products & Retrieving Cart Items
 - [ ] Deleting Related Items & Deleting Cart Products
 - [ ] Adding an Order Model
