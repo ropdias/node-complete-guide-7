@@ -7,6 +7,8 @@ const errorControler = require("./controllers/error");
 const sequelize = require("./util/database");
 const Product = require("./models/product");
 const User = require("./models/user");
+const Cart = require("./models/cart");
+const CartItem = require("./models/cart-item");
 
 const app = express();
 
@@ -33,13 +35,21 @@ app.use(shopRoutes);
 
 app.use(errorControler.get404);
 
-// Defining One-To-Many relationship:
+// Defining One-To-Many relationship between Product and User
 Product.belongsTo(User, { constraints: true, onDelete: "CASCADE" });
 User.hasMany(Product);
 
+// Defining One-To-One relationship between User and Cart
+User.hasOne(Cart); // This will add a user key to the cart
+Cart.belongsTo(User); // this is the inverse relation to the User.hasOne(Cart) and its optional
+
+// Defining Many-To-Many relationship between Cart and Product
+Cart.belongsToMany(Product, { through: CartItem }); // We tell sequelize where these connections should be stored
+Product.belongsToMany(Cart, { through: CartItem }); // We tell sequelize where these connections should be stored
+
 sequelize
-  // .sync({ force: true}) // Take care when using that, it DROPS ALL THE TABLES
-  .sync()
+  .sync({ force: true }) // Take care when using that, it DROPS ALL THE TABLES
+  // .sync()
   .then((result) => {
     return User.findByPk(1);
   })
