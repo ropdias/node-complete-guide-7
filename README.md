@@ -30,7 +30,7 @@ Section 11 covered:
 - [x] Deleting Products
 - [x] Creating a User Model
 - [x] Adding a One-To-Many Relationship
-- [ ] Creating & Managing a Dummy User
+- [x] Creating & Managing a Dummy User
 - [ ] Using Magic Association Methods
 - [ ] Fetching Related Products
 - [ ] One-To-Many & Many-To-Many Relations
