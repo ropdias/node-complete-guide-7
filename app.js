@@ -48,8 +48,8 @@ Cart.belongsToMany(Product, { through: CartItem }); // We tell sequelize where t
 Product.belongsToMany(Cart, { through: CartItem }); // We tell sequelize where these connections should be stored
 
 sequelize
-  .sync({ force: true }) // Take care when using that, it DROPS ALL THE TABLES
-  // .sync()
+  // .sync({ force: true }) // Take care when using that, it DROPS ALL THE TABLES
+  .sync()
   .then((result) => {
     return User.findByPk(1);
   })
@@ -63,7 +63,9 @@ sequelize
     return user;
   })
   .then((user) => {
-    // console.log(user);
+    return user.createCart();
+  })
+  .then((cart) => {
     app.listen(3000);
   })
   .catch((err) => {

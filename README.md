@@ -34,7 +34,7 @@ Section 11 covered:
 - [x] Using Magic Association Methods
 - [x] Fetching Related Products
 - [x] One-To-Many & Many-To-Many Relations
-- [ ] Creating & Fetching a Cart
+- [x] Creating & Fetching a Cart
 - [ ] Adding New Products to the Cart
 - [ ] Adding Existing Products & Retrieving Cart Items
 - [ ] Deleting Related Items & Deleting Cart Products
