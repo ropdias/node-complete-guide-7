@@ -9,6 +9,8 @@ const Product = require("./models/product");
 const User = require("./models/user");
 const Cart = require("./models/cart");
 const CartItem = require("./models/cart-item");
+const Order = require("./models/order");
+const OrderItem = require("./models/order-item");
 
 const app = express();
 
@@ -46,6 +48,12 @@ Cart.belongsTo(User); // this is the inverse relation to the User.hasOne(Cart) a
 // Defining Many-To-Many relationship between Cart and Product
 Cart.belongsToMany(Product, { through: CartItem }); // We tell sequelize where these connections should be stored
 Product.belongsToMany(Cart, { through: CartItem }); // We tell sequelize where these connections should be stored
+
+// Creating relationships to the order table:
+Order.belongsTo(User);
+User.hasMany(Order);
+Order.belongsToMany(Product, { through: OrderItem });
+Product.belongsToMany(Order, { through: OrderItem });
 
 sequelize
   // .sync({ force: true }) // Take care when using that, it DROPS ALL THE TABLES

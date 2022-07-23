@@ -38,7 +38,7 @@ Section 11 covered:
 - [x] Adding New Products to the Cart
 - [x] Adding Existing Products & Retrieving Cart Items
 - [x] Deleting Related Items & Deleting Cart Products
-- [ ] Adding an Order Model
+- [x] Adding an Order Model
 - [ ] Storing Cartitems as Orderitems
 - [ ] Resetting the Cart & Fetching and Outputting Orders
 
