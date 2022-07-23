@@ -40,6 +40,6 @@ Section 11 covered:
 - [x] Deleting Related Items & Deleting Cart Products
 - [x] Adding an Order Model
 - [x] Storing Cartitems as Orderitems
-- [ ] Resetting the Cart & Fetching and Outputting Orders
+- [x] Resetting the Cart & Fetching and Outputting Orders
 
 More info: https://www.udemy.com/course/nodejs-the-complete-guide/
