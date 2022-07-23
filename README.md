@@ -22,7 +22,7 @@ Section 11 covered:
 - [x] Connecting to the Database
 - [x] Defining a Model
 - [x] Syncing JS Definitions to the Database
-- [ ] Inserting Data & Creating a Product
+- [x] Inserting Data & Creating a Product
 - [ ] Retrieving Data & Finding Products
 - [ ] Getting a Single Product with the "where" Condition
 - [ ] Fetching Admin Products
