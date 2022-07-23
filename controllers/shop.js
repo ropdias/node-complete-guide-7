@@ -67,6 +67,7 @@ exports.postCart = (req, res, next) => {
   // Extracting the productId from the request body:
   const prodId = req.body.productId;
   let fetchedCart; // Storing the cart in a variable to make it available in another .then() method
+  let newQuantity = 1;
   req.user
     .getCart()
     .then((cart) => {
@@ -78,17 +79,19 @@ exports.postCart = (req, res, next) => {
       if (products.length > 0) {
         product = products[0];
       }
-      let newQuantity = 1;
       if (product) {
-        // newQuantity = product.quantity + 1
+        // cartItem is the extra field that gets added by sequelize to gives
+        // us access to this in-between table:
+        const oldQuantity = product.cartItem.quantity;
+        newQuantity = oldQuantity + 1;
+        return product;
       }
-      return Product.findByPk(prodId)
-        .then((product) => {
-          return fetchedCart.addProduct(product, {
-            through: { quantity: newQuantity }, // We are saying sequelize that we have an extra field to set
-          }); // Another magic method by sequelize for the many-to-many relationship
-        })
-        .catch((err) => console.log(err));
+      return Product.findByPk(prodId);
+    })
+    .then((product) => {
+      return fetchedCart.addProduct(product, {
+        through: { quantity: newQuantity }, // We are saying sequelize that we have an extra field to set
+      }); // Another magic method by sequelize for the many-to-many relationship
     })
     .then(() => {
       res.redirect("/cart");
