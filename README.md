@@ -31,7 +31,7 @@ Section 11 covered:
 - [x] Creating a User Model
 - [x] Adding a One-To-Many Relationship
 - [x] Creating & Managing a Dummy User
-- [ ] Using Magic Association Methods
+- [x] Using Magic Association Methods
 - [ ] Fetching Related Products
 - [ ] One-To-Many & Many-To-Many Relations
 - [ ] Creating & Fetching a Cart
