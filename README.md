@@ -20,7 +20,7 @@ Section 11 covered:
 
 - [x] What is Sequelize?
 - [x] Connecting to the Database
-- [ ] Defining a Model
+- [x] Defining a Model
 - [ ] Syncing JS Definitions to the Database
 - [ ] Inserting Data & Creating a Product
 - [ ] Retrieving Data & Finding Products
