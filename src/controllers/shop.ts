@@ -1,6 +1,11 @@
+import { Request, Response, NextFunction } from 'express';
 import Product from '../models/product';
 
-export const getProducts = (req, res, next) => {
+export const getProducts = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   Product.findAll()
     .then((products) => {
       res.render('shop/product-list', {
@@ -12,7 +17,7 @@ export const getProducts = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-export const getProduct = (req, res, next) => {
+export const getProduct = (req: Request, res: Response, next: NextFunction) => {
   const prodId = req.params.productId;
   Product.findByPk(prodId)
     .then((product) => {
@@ -34,7 +39,7 @@ export const getProduct = (req, res, next) => {
   //   .catch((err) => console.log(err));
 };
 
-export const getIndex = (req, res, next) => {
+export const getIndex = (req: Request, res: Response, next: NextFunction) => {
   Product.findAll()
     .then((products) => {
       res.render('shop/index', {
@@ -46,7 +51,7 @@ export const getIndex = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-export const getCart = (req, res, next) => {
+export const getCart = (req: Request, res: Response, next: NextFunction) => {
   req.user
     .getCart()
     .then((cart) => {
@@ -62,7 +67,7 @@ export const getCart = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-export const postCart = (req, res, next) => {
+export const postCart = (req: Request, res: Response, next: NextFunction) => {
   // Extracting the productId from the request body:
   const prodId = req.body.productId;
   let fetchedCart; // Storing the cart in a variable to make it available in another .then() method
@@ -100,7 +105,11 @@ export const postCart = (req, res, next) => {
     });
 };
 
-export const postCartDeleteProduct = (req, res, next) => {
+export const postCartDeleteProduct = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const prodId = req.body.productId;
   req.user
     .getCart()
@@ -117,7 +126,7 @@ export const postCartDeleteProduct = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-export const postOrder = (req, res, next) => {
+export const postOrder = (req: Request, res: Response, next: NextFunction) => {
   let fetchedCart;
   req.user
     .getCart()
@@ -149,7 +158,7 @@ export const postOrder = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-export const getOrders = (req, res, next) => {
+export const getOrders = (req: Request, res: Response, next: NextFunction) => {
   req.user
     .getOrders({ include: ['products'] })
     .then((orders) => {

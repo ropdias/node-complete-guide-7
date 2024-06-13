@@ -1,6 +1,11 @@
+import { Request, Response, NextFunction } from 'express';
 import Product from '../models/product';
 
-export const getAddProduct = (req, res, next) => {
+export const getAddProduct = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   res.render('admin/edit-product', {
     pageTitle: 'Add Product',
     path: '/admin/add-product',
@@ -8,7 +13,11 @@ export const getAddProduct = (req, res, next) => {
   });
 };
 
-export const postAddProduct = (req, res, next) => {
+export const postAddProduct = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const title = req.body.title;
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
@@ -32,7 +41,11 @@ export const postAddProduct = (req, res, next) => {
     });
 };
 
-export const getEditProduct = (req, res, next) => {
+export const getEditProduct = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   // We are already coming from a 'edit-product' route but this was added just to show
   // how to retrieve data from a query param:
   const editMode = req.query.edit;
@@ -62,7 +75,11 @@ export const getEditProduct = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-export const postEditProduct = (req, res, next) => {
+export const postEditProduct = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   // Fetch information from the product
   const prodId = req.body.productId;
   const updatedTitle = req.body.title;
@@ -84,7 +101,11 @@ export const postEditProduct = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-export const getProducts = (req, res, next) => {
+export const getProducts = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   req.user
     .getProducts()
     // Product.findAll()
@@ -98,7 +119,11 @@ export const getProducts = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-export const postDeleteProduct = (req, res, next) => {
+export const postDeleteProduct = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   // Fetch information from the product
   const prodId = req.body.productId;
   Product.findByPk(prodId)

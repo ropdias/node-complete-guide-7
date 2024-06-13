@@ -1,3 +1,4 @@
+import { Request, Response, NextFunction } from 'express';
 import path from 'path';
 
 import express from 'express';
@@ -22,7 +23,7 @@ app.set('views', 'src/views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
   User.findByPk(1)
     .then((user) => {
       req.user = user;
