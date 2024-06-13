@@ -1,24 +1,23 @@
-const path = require('path');
+import path from 'path';
 
-const express = require('express');
-const bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
 
-const errorControler = require('./controllers/error');
-const sequelize = require('./util/database');
-const Product = require('./models/product');
-const User = require('./models/user');
-const Cart = require('./models/cart');
-const CartItem = require('./models/cart-item');
-const Order = require('./models/order');
-const OrderItem = require('./models/order-item');
+import { get404 } from './controllers/error';
+import sequelize from './util/database';
+import Product from './models/product';
+import User from './models/user';
+import Cart from './models/cart';
+import CartItem from './models/cart-item';
+import Order from './models/order';
+import OrderItem from './models/order-item';
+import adminRoutes from './routes/admin';
+import shopRoutes from './routes/shop';
 
 const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', 'src/views');
-
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -35,7 +34,7 @@ app.use((req, res, next) => {
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
-app.use(errorControler.get404);
+app.use(get404);
 
 // Defining One-To-Many relationship between Product and User
 Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });

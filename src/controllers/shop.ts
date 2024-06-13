@@ -1,6 +1,6 @@
-const Product = require('../models/product');
+import Product from '../models/product';
 
-exports.getProducts = (req, res, next) => {
+export const getProducts = (req, res, next) => {
   Product.findAll()
     .then((products) => {
       res.render('shop/product-list', {
@@ -12,7 +12,7 @@ exports.getProducts = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.getProduct = (req, res, next) => {
+export const getProduct = (req, res, next) => {
   const prodId = req.params.productId;
   Product.findByPk(prodId)
     .then((product) => {
@@ -34,7 +34,7 @@ exports.getProduct = (req, res, next) => {
   //   .catch((err) => console.log(err));
 };
 
-exports.getIndex = (req, res, next) => {
+export const getIndex = (req, res, next) => {
   Product.findAll()
     .then((products) => {
       res.render('shop/index', {
@@ -46,7 +46,7 @@ exports.getIndex = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.getCart = (req, res, next) => {
+export const getCart = (req, res, next) => {
   req.user
     .getCart()
     .then((cart) => {
@@ -62,7 +62,7 @@ exports.getCart = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.postCart = (req, res, next) => {
+export const postCart = (req, res, next) => {
   // Extracting the productId from the request body:
   const prodId = req.body.productId;
   let fetchedCart; // Storing the cart in a variable to make it available in another .then() method
@@ -100,7 +100,7 @@ exports.postCart = (req, res, next) => {
     });
 };
 
-exports.postCartDeleteProduct = (req, res, next) => {
+export const postCartDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
   req.user
     .getCart()
@@ -117,7 +117,7 @@ exports.postCartDeleteProduct = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.postOrder = (req, res, next) => {
+export const postOrder = (req, res, next) => {
   let fetchedCart;
   req.user
     .getCart()
@@ -149,7 +149,7 @@ exports.postOrder = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.getOrders = (req, res, next) => {
+export const getOrders = (req, res, next) => {
   req.user
     .getOrders({ include: ['products'] })
     .then((orders) => {

@@ -1,6 +1,6 @@
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
 
-const sequelize = require('../util/database');
+import sequelize from '../util/database';
 
 const Product = sequelize.define('product', {
   id: {
@@ -24,7 +24,7 @@ const Product = sequelize.define('product', {
   },
 });
 
-module.exports = Product;
+export default Product;
 
 // Below is the normal approach with a MySQL database:
 // module.exports = class Product {

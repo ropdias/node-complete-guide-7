@@ -12,7 +12,7 @@
 // const Sequelize = require('sequelize');
 // Sequelize is now a named import instead of the default import, so you should
 // use the following to make intellisense work:
-const { Sequelize } = require('sequelize');
+import { Sequelize } from 'sequelize';
 
 const sequelize = new Sequelize('node-complete', 'node-user', 'nodecomplete', {
   dialect: 'mysql',
@@ -20,4 +20,4 @@ const sequelize = new Sequelize('node-complete', 'node-user', 'nodecomplete', {
 });
 
 // This is like a connection pool from the mysql2 but with extra features
-module.exports = sequelize;
+export default sequelize;

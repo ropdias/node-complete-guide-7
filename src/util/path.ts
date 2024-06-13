@@ -1,3 +1,3 @@
-const path = require('path');
+import path from 'path';
 
-module.exports = path.dirname(require.main.filename);
+export const rootDir = path.resolve(__dirname, '..');

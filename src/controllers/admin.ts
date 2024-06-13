@@ -1,6 +1,6 @@
-const Product = require('../models/product');
+import Product from '../models/product';
 
-exports.getAddProduct = (req, res, next) => {
+export const getAddProduct = (req, res, next) => {
   res.render('admin/edit-product', {
     pageTitle: 'Add Product',
     path: '/admin/add-product',
@@ -8,7 +8,7 @@ exports.getAddProduct = (req, res, next) => {
   });
 };
 
-exports.postAddProduct = (req, res, next) => {
+export const postAddProduct = (req, res, next) => {
   const title = req.body.title;
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
@@ -32,7 +32,7 @@ exports.postAddProduct = (req, res, next) => {
     });
 };
 
-exports.getEditProduct = (req, res, next) => {
+export const getEditProduct = (req, res, next) => {
   // We are already coming from a 'edit-product' route but this was added just to show
   // how to retrieve data from a query param:
   const editMode = req.query.edit;
@@ -62,7 +62,7 @@ exports.getEditProduct = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.postEditProduct = (req, res, next) => {
+export const postEditProduct = (req, res, next) => {
   // Fetch information from the product
   const prodId = req.body.productId;
   const updatedTitle = req.body.title;
@@ -84,7 +84,7 @@ exports.postEditProduct = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.getProducts = (req, res, next) => {
+export const getProducts = (req, res, next) => {
   req.user
     .getProducts()
     // Product.findAll()
@@ -98,7 +98,7 @@ exports.getProducts = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.postDeleteProduct = (req, res, next) => {
+export const postDeleteProduct = (req, res, next) => {
   // Fetch information from the product
   const prodId = req.body.productId;
   Product.findByPk(prodId)
