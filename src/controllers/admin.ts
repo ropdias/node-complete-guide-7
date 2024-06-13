@@ -1,9 +1,9 @@
-const Product = require("../models/product");
+const Product = require('../models/product');
 
 exports.getAddProduct = (req, res, next) => {
-  res.render("admin/edit-product", {
-    pageTitle: "Add Product",
-    path: "/admin/add-product",
+  res.render('admin/edit-product', {
+    pageTitle: 'Add Product',
+    path: '/admin/add-product',
     editing: false,
   });
 };
@@ -24,8 +24,8 @@ exports.postAddProduct = (req, res, next) => {
       description: description,
     })
     .then((result) => {
-      console.log("Created Product");
-      res.redirect("/admin/products");
+      console.log('Created Product');
+      res.redirect('/admin/products');
     })
     .catch((err) => {
       console.log(err);
@@ -37,7 +37,7 @@ exports.getEditProduct = (req, res, next) => {
   // how to retrieve data from a query param:
   const editMode = req.query.edit;
   if (!editMode) {
-    return res.redirect("/");
+    return res.redirect('/');
   }
   const prodId = req.params.productId;
   // We can use the "magic association" method getProducts() to find
@@ -50,11 +50,11 @@ exports.getEditProduct = (req, res, next) => {
       // If we don't have a product and it's undefined:
       if (!product) {
         // We could retrieve a error page (better user experience) but for now we will just redirect:
-        return res.redirect("/");
+        return res.redirect('/');
       }
-      res.render("admin/edit-product", {
-        pageTitle: "Edit Product",
-        path: "/admin/edit-product",
+      res.render('admin/edit-product', {
+        pageTitle: 'Edit Product',
+        path: '/admin/edit-product',
         editing: editMode,
         product: product,
       });
@@ -78,8 +78,8 @@ exports.postEditProduct = (req, res, next) => {
       return product.save();
     })
     .then(() => {
-      console.log("UPDATED PRODUCT!");
-      res.redirect("/admin/products");
+      console.log('UPDATED PRODUCT!');
+      res.redirect('/admin/products');
     })
     .catch((err) => console.log(err));
 };
@@ -89,10 +89,10 @@ exports.getProducts = (req, res, next) => {
     .getProducts()
     // Product.findAll()
     .then((products) => {
-      res.render("admin/products", {
+      res.render('admin/products', {
         prods: products,
-        pageTitle: "Admin Products",
-        path: "/admin/products",
+        pageTitle: 'Admin Products',
+        path: '/admin/products',
       });
     })
     .catch((err) => console.log(err));
@@ -106,8 +106,8 @@ exports.postDeleteProduct = (req, res, next) => {
       return product.destroy();
     })
     .then((result) => {
-      console.log("DESTROYED PRODUCT");
-      res.redirect("/admin/products");
+      console.log('DESTROYED PRODUCT');
+      res.redirect('/admin/products');
     })
     .catch((err) => console.log(err));
 };
