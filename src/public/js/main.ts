@@ -1,16 +1,21 @@
-const backdrop = document.querySelector('.backdrop');
-const sideDrawer = document.querySelector('.mobile-nav');
-const menuToggle = document.querySelector('#side-menu-toggle');
+const backdrop: HTMLDivElement | null = document.querySelector('.backdrop');
+const sideDrawer: HTMLElement | null = document.querySelector('.mobile-nav');
+const menuToggle: HTMLButtonElement | null =
+  document.querySelector('#side-menu-toggle');
 
-function backdropClickHandler() {
-  backdrop.style.display = 'none';
-  sideDrawer.classList.remove('open');
+if (backdrop && sideDrawer && menuToggle) {
+  function backdropClickHandler() {
+    backdrop!.style.display = 'none';
+    sideDrawer!.classList.remove('open');
+  }
+
+  function menuToggleClickHandler() {
+    backdrop!.style.display = 'block';
+    sideDrawer!.classList.add('open');
+  }
+
+  backdrop.addEventListener('click', backdropClickHandler);
+  menuToggle.addEventListener('click', menuToggleClickHandler);
+} else {
+  console.error('One or more elements were not found!');
 }
-
-function menuToggleClickHandler() {
-  backdrop.style.display = 'block';
-  sideDrawer.classList.add('open');
-}
-
-backdrop.addEventListener('click', backdropClickHandler);
-menuToggle.addEventListener('click', menuToggleClickHandler);
